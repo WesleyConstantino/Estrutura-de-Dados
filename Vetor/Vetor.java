@@ -15,7 +15,7 @@ public class Vetor {
       
       //O laço "for" abaixo imprime tudo o que tem dentro do meu vetor
       for(int i = 0; i < MeuVetor.length; i++){
-         System.out.println("Posição " + (i + 1) + " do vetor = " + MeuVetor[i]);   
+         System.out.println("Posição " + i + " do vetor = " + MeuVetor[i]);   
       }
     }
     
