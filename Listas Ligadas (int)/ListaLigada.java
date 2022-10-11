@@ -5,28 +5,7 @@ public class ListaLigada {
     private Node header; // início da lista ligada
     private Node trailer; // fim da lista ligada
     private int size;    // quantidade de elementos na lista ligada
-    private Node meio;
     
-//    public void meio(Node novoNumeroInteiro) {
-//    // retorna o meio da lista	
-//        if (isEmpty()) {
-//         // a lista está vazia
-//           meio = novoNumeroInteiro;
-//        } else {
-//            // já existe pelo menos um animal na lista
-//            
-//            meio = ;
-//        }
-//  }
-    
-//    public void mostraMeio() {
-//
-//      int i = 0;
-//        while (i <= size / 2) {
-//        i++;
-//    }
-//    meio = ;
-//}
     
     public ListaLigada() {
         // construtor - cria uma lista vazia
