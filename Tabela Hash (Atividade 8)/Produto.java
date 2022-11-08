@@ -6,16 +6,29 @@
 
 package com.mycompany.produtohash;
 
+
+
+class InvalidProduct extends Exception
+{
+   public InvalidProduct(String erro)
+   {
+      super(erro);
+   }
+}
+
 public class Produto {
     private String cod;
     private String descricao;
     private double preco;
 
-    public Produto(String cod, String descricao, double preco) {
+    public Produto(String cod, String descricao, double preco) throws InvalidProduct {
         this.cod = cod;
         this.descricao = descricao;
         this.preco = preco;
+        if(!isValid())
+           throw new InvalidProduct("produto inválido");
     }
+    //*******************************************************************************************
 
     public String getCod() {
         return cod;
