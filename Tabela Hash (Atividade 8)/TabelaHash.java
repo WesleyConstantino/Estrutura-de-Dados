@@ -35,5 +35,48 @@ import java.util.LinkedList;
             }
     }
     void remove(String code){
-
+        try{
+             int index = Produto.getHash(code);
+             LinkedList<Produto> l = produtos.get(index);
+             Boolean found = false;
+             if(l != null){
+                for(int i = 0; i < l.size(); i++){
+                    Produto pp = l.get(i);
+                    if(pp.getCodigo().equals(code)){
+                      l.remove(i);
+                      size --;
+                      found = true;
+                    }
+                }
+             }
+             if(!found){
+                 System.out.println("produto - "+ code + "not found!");
+             }
+             else
+                 System.out.println("produto - "+ code + "removido com sucesso!");
+ 
+            }catch(Exception e){
+               System.err.println("Erro: " + e);
+            }
+    }
+    Produto consulta(String code)
+    {
+       Produto res = null;
+       int index = Produto.getHash(code);
+       LinkedList<Produto> l = produtos.get(index);
+       Boolean found= false;
+       if(l != null){
+          for(int i = 0; i < l.size(); i++){
+             Produto p = l.get(i);
+             if(p.getCodigo().equals(code)){
+                 res = p;
+                 found = true;
+             }
+          }
+       }
+       return resp;
+    }
+    void mostraTabela()
+    {
+      
     }
