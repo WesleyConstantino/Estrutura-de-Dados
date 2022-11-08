@@ -78,5 +78,12 @@ import java.util.LinkedList;
     }
     void mostraTabela()
     {
-      
+      for(int i = 0; i < MAX; i++){
+          LinkedList<Produto> l = produtos.get(i);  
+          for(int j=0; l != null && j < l.size(); j++){
+              Produto p = l.get(j);
+              System.out.println("produto " + i + ", " + j + ": " +p);
+          } 
+        }
+      }
     }
