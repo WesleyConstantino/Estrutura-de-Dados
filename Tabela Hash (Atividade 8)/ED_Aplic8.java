@@ -36,4 +36,13 @@ public class ED_Aplic8{
                      } 
                     break;                 
            }
-            case 2:
+                case 2:
+                {
+                    System.out.println("código: ");
+                    code = s.nextLine();    
+                    th.remove(code);
+                    int count = countries.get(Produto.getContryCode(code)); 
+                    countries.put(Produto.getContryCode(code), --count);
+                    break; 
+                }
+                case 3:
