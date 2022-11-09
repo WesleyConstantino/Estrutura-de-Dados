@@ -38,16 +38,16 @@ public class Atividade8{
                     s.nextLine();
                     try{
                         th.insert(new Produto(code, desc, preco));
-                        int country = Produto.getCountryCode(code);
+                        int country = Produto.getCodPais(code);
                         if(countries.containsKey(country)){
                            int count = countries.get(country);
                            count++;
                            countries.replace(country, count);
                         }
                     else{
-                         countries.put(country, l);
+                         countries.put(country, 1);
                          }
-                    }catch(InvalidProduct e){
+                    }catch(ProdutoInvalido e){
                         System.err.println(e);
                      } 
                     break;                 
@@ -57,15 +57,15 @@ public class Atividade8{
                     System.out.println("código: ");
                     code = s.nextLine();    
                     th.remove(code);
-                    int count = countries.get(Produto.getContryCode(code)); 
-                    countries.put(Produto.getContryCode(code), --count);
+                    int count = countries.get(Produto.getCodPais(code)); 
+                    countries.put(Produto.getCodPais(code), --count);
                     break; 
                 }
                 case 3:
                 {
                     System.out.println("código: ");
                     code = s.nextLine(); 
-                    Produto p = th.cosulta(code); 
+                    Produto p = th.consulta(code); 
                     System.out.println(p); 
                     break;                
                 }
