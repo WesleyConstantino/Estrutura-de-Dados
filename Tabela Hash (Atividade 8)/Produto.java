@@ -69,19 +69,19 @@ public class Produto {
       a = a - '0';
       b = b - '0';
       c = c - '0';
-      code = a * 100 + b * 10 + e;
+      code = a * 100 + b * 10 + c;
       return code;
     }
     int getCountryCode()
     {
-      return getContryCode(this.codigo);
+      return getCountryCode(this.codigo);
     }
     int getHash()
     {
       return getHash(codigo); 
     }
     static int getHash(String codigo){
-       int code = getCountryCode(coudigo);
+       int code = getCountryCode(codigo);
        int resto = (code % 10);
        return resto;
     }
