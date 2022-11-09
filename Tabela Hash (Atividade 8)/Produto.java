@@ -10,84 +10,84 @@ package atividade8;
  *
  * @author x601533
  */
-class InvalidProduct extends Exception
-{
-   public InvalidProduct(String erro)
-   {
-      super(erro);
-   }
-}
+import java.util.ArrayList;
+import java.util.LinkedList;
 
-public class Produto {
-    private String codigo;
-    private String descricao;
-    private double preco;
-
-    public Produto(String codigo, String descricao, double preco) throws InvalidProduct {
-        this.codigo = codigo;
-        this.descricao = descricao;
-        this.preco = preco;
-        if(!isValid())
-           throw new InvalidProduct("produto inválido");
-    }
-    //*******************************************************************************************
-
-    public String getCod() {
-        return codigo;
-    }
-
-    public void setCod(String codigo) {
-        this.codigo = codigo;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
-    
-        public double getPreco() {
-        return preco;
-    }
-
-    public void setPreco(double preco) {
-        this.preco = preco;
-    }
-    boolean isValid()
+ public class TabelaHash{
+   final private int MAX = 10;
+   ArrayList<LinkedList<Produto>> produtos = new ArrayList<>(MAX);
+   int size = 0;
+   TabelaHash(){
+       int i = 0;
+       while(i < MAX){
+         produtos.add(new LinkedList<>());
+         i++;
+       }
+    } 
+    int size()
     {
-       return !descricao.isEmpty() && codigo.lenght() == 13 && preco > 0.0; 
+      return this.size;
     }
-    static int getCountryCode(String codigo)
+    void insert(Produto p)
     {
-      int a = codigo.charAt(0);
-      int b = codigo.charAt(1);
-      int c = codigo.charAt(2);
-      int code;
-
-      a = a - '0';
-      b = b - '0';
-      c = c - '0';
-      code = a * 100 + b * 10 + c;
-      return code;
+        try{
+             int index = p.getHash();
+             produtos.get(index).add(p);
+             size ++;
+            }catch(Exception e){
+               System.err.println("Erro: " + e);
+            }
     }
-    int getCountryCode()
+    void remove(String code){
+        try{
+             int index = Produto.getHash(code);
+             LinkedList<Produto> l = produtos.get(index);
+             Boolean found = false;
+             if(l != null){
+                for(int i = 0; i < l.size(); i++){
+                    Produto pp = l.get(i);
+                    if(pp.getCodigo().equals(code)){
+                      l.remove(i);
+                      size --;
+                      found = true;
+                    }
+                }
+             }
+             if(!found){
+                 System.out.println("produto - "+ code + "not found!");
+             }
+             else
+                 System.out.println("produto - "+ code + "removido com sucesso!");
+ 
+            }catch(Exception e){
+               System.err.println("Erro: " + e);
+            }
+    }
+    Produto consulta(String code)
     {
-      return getCountryCode(this.codigo);
+       Produto resp = null;
+       int index = Produto.getHash(code);
+       LinkedList<Produto> l = produtos.get(index);
+       Boolean found= false;
+       if(l != null){
+          for(int i = 0; i < l.size(); i++){
+             Produto p = l.get(i);
+             if(p.getCodigo().equals(code)){
+                 resp = p;
+                 found = true;
+             }
+          }
+       }
+       return resp;
     }
-    int getHash()
+    void mostraTabela()
     {
-      return getHash(codigo); 
+      for(int i = 0; i < MAX; i++){
+          LinkedList<Produto> l = produtos.get(i);  
+          for(int j=0; l != null && j < l.size(); j++){
+              Produto p = l.get(j);
+              System.out.println("produto " + i + ", " + j + ": " +p);
+          } 
+        }
+      }
     }
-    static int getHash(String codigo){
-       int code = getCountryCode(codigo);
-       int resto = (code % 10);
-       return resto;
-    }
-    @Override
-    public String toString()
-    {
-      return this.getCodigo() + " - " + this.getDescricao() + "preço = " + this.getPreco();
-    }
-}
