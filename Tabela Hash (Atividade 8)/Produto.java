@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 
-package com.mycompany.produtohash;
+package atividade8;
 
-
-
+/**
+ *
+ * @author x601533
+ */
 class InvalidProduct extends Exception
 {
    public InvalidProduct(String erro)
@@ -46,11 +48,11 @@ public class Produto {
         this.descricao = descricao;
     }
     
-        public String getPreco() {
+        public double getPreco() {
         return preco;
     }
 
-    public void setPreco(String preco) {
+    public void setPreco(double preco) {
         this.preco = preco;
     }
     boolean isValid()
