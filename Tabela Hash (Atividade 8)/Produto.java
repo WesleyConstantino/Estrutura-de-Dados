@@ -85,7 +85,7 @@ public class Produto {
        int resto = (code % 10);
        return resto;
     }
-    @Overrride
+    @Override
     public String toString()
     {
       return this.getCodigo() + " - " + this.getDescricao() + "preço = " + this.getPreco();
