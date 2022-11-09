@@ -19,12 +19,12 @@ class InvalidProduct extends Exception
 }
 
 public class Produto {
-    private String cod;
+    private String codigo;
     private String descricao;
     private double preco;
 
-    public Produto(String cod, String descricao, double preco) throws InvalidProduct {
-        this.cod = cod;
+    public Produto(String codigo, String descricao, double preco) throws InvalidProduct {
+        this.codigo = codigo;
         this.descricao = descricao;
         this.preco = preco;
         if(!isValid())
@@ -33,11 +33,11 @@ public class Produto {
     //*******************************************************************************************
 
     public String getCod() {
-        return cod;
+        return codigo;
     }
 
-    public void setCod(String cod) {
-        this.cod = cod;
+    public void setCod(String codigo) {
+        this.codigo = codigo;
     }
 
     public String getDescricao() {
