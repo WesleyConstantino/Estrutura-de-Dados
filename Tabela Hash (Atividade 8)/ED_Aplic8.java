@@ -21,6 +21,18 @@ public class ED_Aplic8{
                     preco = s.nextDouble();
                     s.nextLine();
                     try{
-                        
-            }                     
+                        th.insert(new Produto(code, desc, preco));
+                        int country = Produto.getCountryCode(code);
+                        if(countries.containsKey(country)){
+                           int count = countries.get(country);
+                           count++;
+                           countries.replace(country.count);
+                        }
+                    else{
+                         countries.put(country, l);
+                         }
+                    }catch(InvalidProduct e){
+                        System.err.println(e);
+                     } 
+                    break;                 
            }
