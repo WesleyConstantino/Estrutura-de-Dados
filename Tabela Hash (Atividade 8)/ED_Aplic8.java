@@ -46,3 +46,11 @@ public class ED_Aplic8{
                     break; 
                 }
                 case 3:
+                {
+                    System.out.println("código: ");
+                    code = s.nextLine(); 
+                    Produto p = th.cosulta(code); 
+                    System.out.println(p); 
+                    break;                
+                }
+                case 4:
