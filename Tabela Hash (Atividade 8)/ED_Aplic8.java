@@ -74,3 +74,20 @@ public class ED_Aplic8{
        }
        statc int menu(){
             Scanner s = new Scanner(System.in);
+
+            System.out.println("Entre com uma opção: ");
+            System.out.println("0 - sair");
+            System.out.println("1 - adicionar produto");
+            System.out.println("2 - remover produto");
+            System.out.println("3 - consultar produto");
+            System.out.println("4 - obter tamanho da tabela");
+            System.out.println("5 - visualizar tabela");
+            System.out.println("6 - contagem de códigos");
+
+            int i = 0;
+            do{
+                i = s.nextInt();
+              } while (i < 0 || i > 6);
+              return i;
+        }
+  }
