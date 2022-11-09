@@ -1,4 +1,16 @@
-public class ED_Aplic8{
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+package atividade8;
+
+/**
+ *
+ * @author x601533
+ */
+public class Atividade8{
 
      public static void main(String[] args){
        int i = 0;
@@ -35,7 +47,7 @@ public class ED_Aplic8{
                         System.err.println(e);
                      } 
                     break;                 
-           }
+           
                 case 2:
                 {
                     System.out.println("código: ");
@@ -54,25 +66,25 @@ public class ED_Aplic8{
                     break;                
                 }
                 case 4:
-                {
+              
                     System.out.println(th.size());
                     break;  
-                }
+              
                 case 5:
-                {
+
                     th.mostraTabela();
                     break;  
-                }
-                case 4:
-                {
+
+                case 6:
+
                     System.out.println(countries.toString());
                     break; 
-                 default:
-                    break; 
+                    default:
+                     break; 
                 }
            }while (i != 0);
        }
-       statc int menu(){
+       static int menu(){
             Scanner s = new Scanner(System.in);
 
             System.out.println("Entre com uma opção: ");
