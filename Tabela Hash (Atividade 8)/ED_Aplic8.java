@@ -54,3 +54,23 @@ public class ED_Aplic8{
                     break;                
                 }
                 case 4:
+                {
+                    System.out.println(th.size());
+                    break;  
+                }
+                case 5:
+                {
+                    th.mostraTabela();
+                    break;  
+                }
+                case 4:
+                {
+                    System.out.println(countries.toString());
+                    break; 
+                 default:
+                    break; 
+                }
+           }while (i != 0);
+       }
+       statc int menu(){
+            Scanner s = new Scanner(System.in);
