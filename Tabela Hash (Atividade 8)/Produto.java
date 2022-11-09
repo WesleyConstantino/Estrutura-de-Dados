@@ -10,25 +10,24 @@ package atividade8;
  *
  * @author x601533
  */
-class InvalidProduct extends Exception
+class ProdutoInvalido extends Exception
 {
-   public InvalidProduct(String erro)
+   public ProdutoInvalido(String erro)
    {
       super(erro);
    }
 }
 
 public class Produto {
-    private String codigo;
-    private String descricao;
+    private String descricao, codigo;
     private double preco;
 
-    public Produto(String codigo, String descricao, double preco) throws InvalidProduct {
+    public Produto(String codigo, String descricao, double preco) throws ProdutoInvalido {
         this.codigo = codigo;
         this.descricao = descricao;
         this.preco = preco;
-        if(!isValid())
-           throw new InvalidProduct("produto inválido");
+        if(!Validacao())
+           throw new ProdutoInvalido("O produto digitado é inválido!");
     }
     //*******************************************************************************************
 
@@ -55,7 +54,7 @@ public class Produto {
     public void setPreco(double preco) {
         this.preco = preco;
     }
-    boolean isValid()
+    boolean Validacao()
     {
        return !descricao.isEmpty() && codigo.length() == 13 && preco > 0.0; 
     }
