@@ -10,96 +10,84 @@ package atividade8;
  *
  * @author x601533
  */
-public class Atividade8{
+class InvalidProduct extends Exception
+{
+   public InvalidProduct(String erro)
+   {
+      super(erro);
+   }
+}
 
-     public static void main(String[] args){
-       int i = 0;
-       Scanner s = new Scanner(System.in);
-       TabelaHash th = new TabelaHash();
-       TreeMap<Integer, Integer> countries = new TreeMap<>();
+public class Produto {
+    private String cod;
+    private String descricao;
+    private double preco;
 
-       do{
-           String code, desc;
-           double preco;
+    public Produto(String cod, String descricao, double preco) throws InvalidProduct {
+        this.cod = cod;
+        this.descricao = descricao;
+        this.preco = preco;
+        if(!isValid())
+           throw new InvalidProduct("produto inválido");
+    }
+    //*******************************************************************************************
 
-           i = menu();
-           switch(i){
-                case 1:
-                    System.out.println("código: ");
-                    code = s.nextLine();
-                    System.out.println("descrição: ");
-                    desc = s.nextLine();
-                    System.out.println("preço: ");
-                    preco = s.nextDouble();
-                    s.nextLine();
-                    try{
-                        th.insert(new Produto(code, desc, preco));
-                        int country = Produto.getCountryCode(code);
-                        if(countries.containsKey(country)){
-                           int count = countries.get(country);
-                           count++;
-                           countries.replace(country.count);
-                        }
-                    else{
-                         countries.put(country, l);
-                         }
-                    }catch(InvalidProduct e){
-                        System.err.println(e);
-                     } 
-                    break;                 
-           
-                case 2:
-                {
-                    System.out.println("código: ");
-                    code = s.nextLine();    
-                    th.remove(code);
-                    int count = countries.get(Produto.getContryCode(code)); 
-                    countries.put(Produto.getContryCode(code), --count);
-                    break; 
-                }
-                case 3:
-                {
-                    System.out.println("código: ");
-                    code = s.nextLine(); 
-                    Produto p = th.cosulta(code); 
-                    System.out.println(p); 
-                    break;                
-                }
-                case 4:
-              
-                    System.out.println(th.size());
-                    break;  
-              
-                case 5:
+    public String getCod() {
+        return cod;
+    }
 
-                    th.mostraTabela();
-                    break;  
+    public void setCod(String cod) {
+        this.cod = cod;
+    }
 
-                case 6:
+    public String getDescricao() {
+        return descricao;
+    }
 
-                    System.out.println(countries.toString());
-                    break; 
-                    default:
-                     break; 
-                }
-           }while (i != 0);
-       }
-       static int menu(){
-            Scanner s = new Scanner(System.in);
+    public void setDescricao(String descricao) {
+        this.descricao = descricao;
+    }
+    
+        public String getPreco() {
+        return preco;
+    }
 
-            System.out.println("Entre com uma opção: ");
-            System.out.println("0 - sair");
-            System.out.println("1 - adicionar produto");
-            System.out.println("2 - remover produto");
-            System.out.println("3 - consultar produto");
-            System.out.println("4 - obter tamanho da tabela");
-            System.out.println("5 - visualizar tabela");
-            System.out.println("6 - contagem de códigos");
+    public void setPreco(String preco) {
+        this.preco = preco;
+    }
+    boolean isValid()
+    {
+       return !descricao.isEmpty() && codigo.lenght() == 13 && preco > 0.0; 
+    }
+    static int getCountryCode(String codigo)
+    {
+      int a = codigo.charAt(0);
+      int b = codigo.charAt(1);
+      int c = codigo.charAt(2);
+      int code;
 
-            int i = 0;
-            do{
-                i = s.nextInt();
-              } while (i < 0 || i > 6);
-              return i;
-        }
-  }
+      a = a - '0';
+      b = b - '0';
+      c = c - '0';
+      code = a * 100 + b * 10 + e;
+      return code;
+    }
+    int getCountryCode()
+    {
+      return getContryCode(this.codigo);
+    }
+    int getHash()
+    {
+      return getHash(codigo); 
+    }
+    static int getHash(String codigo){
+       int code = getCountryCode(coudigo);
+       int resto = (code % 10);
+       return resto;
+    }
+    @Overrride
+    public String toString()
+    {
+      return this.getCodigo() + " - " + this.getDescricao() + "preço = " + this.getPreco();
+    }
+}
