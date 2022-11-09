@@ -36,3 +36,4 @@ public class ED_Aplic8{
                      } 
                     break;                 
            }
+            case 2:
