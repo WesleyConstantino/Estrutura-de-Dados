@@ -19,11 +19,11 @@ class ProdutoInvalido extends Exception
 }
 
 public class Produto {
-    private String descricao, codigo;
+    private String descricao, cod;
     private double preco;
 
-    public Produto(String codigo, String descricao, double preco) throws ProdutoInvalido {
-        this.codigo = codigo;
+    public Produto(String cod, String descricao, double preco) throws ProdutoInvalido {
+        this.cod = cod;
         this.descricao = descricao;
         this.preco = preco;
         if(!Validacao())
@@ -32,11 +32,11 @@ public class Produto {
     //*******************************************************************************************
 
     public String getCodigo() {
-        return codigo;
+        return cod;
     }
 
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
+    public void setCodigo(String cod) {
+        this.cod = cod;
     }
 
     public String getDescricao() {
@@ -54,36 +54,42 @@ public class Produto {
     public void setPreco(double preco) {
         this.preco = preco;
     }
+
     boolean Validacao()
     {
-       return !descricao.isEmpty() && codigo.length() == 13 && preco > 0.0; 
+       return !descricao.isEmpty() && cod.length() == 13 && preco > 0.0; 
     }
-    static int getCountryCode(String codigo)
-    {
-      int a = codigo.charAt(0);
-      int b = codigo.charAt(1);
-      int c = codigo.charAt(2);
-      int code;
 
-      a = a - '0';
-      b = b - '0';
-      c = c - '0';
-      code = a * 100 + b * 10 + c;
-      return code;
-    }
-    int getCountryCode()
+    static int getCodPais(String cod)
     {
-      return getCountryCode(this.codigo);
+      int c1 = cod.charAt(0);
+      int c2 = cod.charAt(1);
+      int c3 = cod.charAt(2);
+      int codigo;
+
+      c1 = c1 - '0';
+      c2 = c2 - '0';
+      c3 = c3 - '0';
+      codigo = c1 * 100 + c2 * 10 + c3;
+      return codigo;
     }
+
+    int getCodPais()
+    {
+      return getCodPais(this.cod);
+    }
+
     int getHash()
     {
-      return getHash(codigo); 
+      return getHash(cod); 
     }
+
     static int getHash(String codigo){
-       int code = getCountryCode(codigo);
+       int code = getCodPais(codigo);
        int resto = (code % 10);
        return resto;
     }
+
     @Override
     public String toString()
     {
