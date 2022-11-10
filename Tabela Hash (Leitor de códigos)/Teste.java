@@ -14,15 +14,15 @@ import java.util.TreeMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Teste{
+public class Atividade8{
 
      public static void main(String[] args){
+       Scanner scan = new Scanner(System.in);
        TabelaHash tabela = new TabelaHash();
        TreeMap<Integer, Integer> countries = new TreeMap<>();
-       Scanner scan = new Scanner(System.in);
 
                int opc = 0;
-//*********************************************************************************
+
         while (opc != 3) {
             System.out.println("MENU");
             System.out.println("1- Inserir Produto");
@@ -31,7 +31,7 @@ public class Teste{
             do {
                 opc = scan.nextInt();
             } while (opc < 1 || opc > 3);
-//*********************************************************************************
+
            String code; 
            String desc;
            double preco;
@@ -49,7 +49,7 @@ public class Teste{
                     scan.nextLine();
 
                     try{
-                        tabela.insert(new Produto(code, desc, preco));
+                        tabela.inserir(new Produto(code, desc, preco));
                         int country = Produto.getCodPais(code);
                         if(countries.containsKey(country)){
                            int count = countries.get(country);
