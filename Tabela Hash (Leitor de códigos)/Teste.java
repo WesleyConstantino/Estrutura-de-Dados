@@ -14,7 +14,7 @@ import java.util.TreeMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Atividade8{
+public class Teste{
 
      public static void main(String[] args){
        Scanner scan = new Scanner(System.in);
