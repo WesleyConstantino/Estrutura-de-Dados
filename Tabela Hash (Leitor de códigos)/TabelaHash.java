@@ -10,17 +10,18 @@ package atividade8;
  *
  * @author x601533
  */
-import java.util.ArrayList;
 import java.util.LinkedList;
+import java.util.ArrayList;
 
  public class TabelaHash{
-   final private int MAX = 10;
-   ArrayList<LinkedList<Produto>> produtos = new ArrayList<>(MAX);
+   final private int Tam = 10;
+   ArrayList<LinkedList<Produto>> prod = new ArrayList<>(Tam);
    int size = 0;
+
    TabelaHash(){
        int i = 0;
-       while(i < MAX){
-         produtos.add(new LinkedList<>());
+       while(i < Tam){
+         prod.add(new LinkedList<>());
          i++;
        }
     } 
@@ -28,66 +29,16 @@ import java.util.LinkedList;
     {
       return this.size;
     }
-    void insert(Produto p)
+    
+    void inserir(Produto p)
     {
-        try{
-             int index = p.getHash();
-             produtos.get(index).add(p);
-             size ++;
+       try{
+            int index = p.getHash();
+            prod.get(index).add(p);
+            size ++;
             }catch(Exception e){
-               System.err.println("Erro: " + e);
-            }
+             System.err.println("Erro: " + e);
+           }
     }
-    void remove(String code){
-        try{
-             int index = Produto.getHash(code);
-             LinkedList<Produto> l = produtos.get(index);
-             Boolean found = false;
-             if(l != null){
-                for(int i = 0; i < l.size(); i++){
-                    Produto pp = l.get(i);
-                    if(pp.getCodigo().equals(code)){
-                      l.remove(i);
-                      size --;
-                      found = true;
-                    }
-                }
-             }
-             if(!found){
-                 System.out.println("produto - "+ code + "not found!");
-             }
-             else
-                 System.out.println("produto - "+ code + "removido com sucesso!");
- 
-            }catch(Exception e){
-               System.err.println("Erro: " + e);
-            }
-    }
-    Produto consulta(String code)
-    {
-       Produto resp = null;
-       int index = Produto.getHash(code);
-       LinkedList<Produto> l = produtos.get(index);
-       Boolean found= false;
-       if(l != null){
-          for(int i = 0; i < l.size(); i++){
-             Produto p = l.get(i);
-             if(p.getCodigo().equals(code)){
-                 resp = p;
-                 found = true;
-             }
-          }
-       }
-       return resp;
-    }
-    void mostraTabela()
-    {
-      for(int i = 0; i < MAX; i++){
-          LinkedList<Produto> l = produtos.get(i);  
-          for(int j=0; l != null && j < l.size(); j++){
-              Produto p = l.get(j);
-              System.out.println("produto " + i + ", " + j + ": " +p);
-          } 
-        }
-      }
-    }
+
+}
